@@ -5,4 +5,13 @@
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
 
+@interface TaskListViewController : UITableViewController
+
+@property IBOutlet UILabel * task_name;
+
+@property IBOutletCollection(UILabel) NSArray * task_names;
+
+-(IBAction) viewDidLoad;
+
+@end
 

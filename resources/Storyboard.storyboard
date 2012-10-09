@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Task List View Controller - Root View Controller-->
+        <!--Task List View Controller - Task List-->
         <scene sceneID="Mp1-0A-Ree">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3n-BB-iSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -34,11 +34,18 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UXP-I8-Eo4" id="fTB-oZ-GXf"/>
+                            <outlet property="delegate" destination="UXP-I8-Eo4" id="zXD-eE-Inp"/>
+                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="A60-s1-e4d"/>
+                    <navigationItem key="navigationItem" title="Task List" id="A60-s1-e4d"/>
+                    <connections>
+                        <outlet property="task_name" destination="iC8-kI-bi4" id="GFZ-Xk-6oa"/>
+                    </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="486" y="-216"/>
+            <point key="canvasLocation" x="475" y="-216"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vta-85-HPv">
@@ -53,9 +60,19 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="13" y="-216"/>
+            <point key="canvasLocation" x="52" y="-216"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="TaskListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="viewDidLoad"/>
+                <relationship kind="outlet" name="task_name" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="task_names" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
