@@ -3,4 +3,7 @@
 
 #import "Stubs.h"
 
+@implementation TaskListViewController
+
+@end
 
