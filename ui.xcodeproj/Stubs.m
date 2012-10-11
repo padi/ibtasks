@@ -7,3 +7,8 @@
 
 @end
 
+
+@implementation TaskListViewCell
+
+@end
+

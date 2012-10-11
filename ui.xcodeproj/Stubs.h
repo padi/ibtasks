@@ -15,3 +15,15 @@
 
 @end
 
+
+@interface TaskListViewCell : UITableViewCell
+
+@property IBOutlet UILabel * title;
+@property IBOutlet UILabel * date;
+
+
+
+
+
+@end
+

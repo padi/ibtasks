@@ -1,19 +1,40 @@
 class TaskListViewController < UITableViewController
-  extend IB
+  attr_accessor :tasks
+
+  def viewDidLoad
+    super
+
+    self.tasks = Task.all
+    puts "tasks ="
+    puts tasks.inspect
+  end
 
   def tableView tableView, cellForRowAtIndexPath: indexPath
-    @reuseIdentifier ||= "CELL_IDENTIFIER"
+    @reuseIdentifier ||= "TaskCell"
 
-    cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || begin
-      UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
-    end
+    cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
 
-    cell.setText NSString.stringWithFormat "I am cell #{indexPath.row}"
+    # if cell.nil?
+    #   cell = TaskListViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+    # end
+
+    # cell.setText NSString.stringWithFormat "I am cell #{indexPath.row}"
+
+    task = tasks[indexPath.row]
+
+    cell.textLabel.text = task.title + indexPath.row.to_s
+    cell.detailTextLabel.text = task.date.to_s
 
     cell
   end
 
+  def tableView tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath
+    if editingStyle == UITableViewCellEditingStyleDelete
+      self
+    end
+  end
+
   def tableView tableView, numberOfRowsInSection: section
-    10
+    tasks.count
   end
 end
