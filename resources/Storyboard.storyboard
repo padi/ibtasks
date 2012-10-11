@@ -34,6 +34,10 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UXP-I8-Eo4" id="ido-iL-DY8"/>
+                            <outlet property="delegate" destination="UXP-I8-Eo4" id="jp7-BA-e0S"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="A60-s1-e4d"/>
                 </tableViewController>
