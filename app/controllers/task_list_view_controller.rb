@@ -28,7 +28,6 @@ class TaskListViewController < UITableViewController
 
   def tableView tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath
     if editingStyle == UITableViewCellEditingStyleDelete
-      puts 'triggered'
       tasks.delete tasks[indexPath.row]
       tableView.deleteRowsAtIndexPaths [indexPath], withRowAnimation:UITableViewRowAnimationFade
       tableView.reloadData
