@@ -9,6 +9,8 @@ class AppDelegate
     @window.rootViewController = storyboard.instantiateInitialViewController
 
     @window.makeKeyAndVisible
+
+    @task = Task.deserialize_from_file 'tasks.dat'
     true
   end
 end

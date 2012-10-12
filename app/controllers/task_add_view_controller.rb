@@ -12,6 +12,7 @@ class TaskAddViewController < UIViewController
 
   def save sender
     Task.create title: 'something', date: Time.now
+    Task.serialize_to_file 'tasks.dat'
     close
   end
 end

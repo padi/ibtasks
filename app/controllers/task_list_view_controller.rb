@@ -28,8 +28,18 @@ class TaskListViewController < UITableViewController
 
   def tableView tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath
     if editingStyle == UITableViewCellEditingStyleDelete
+      # delete task from array
       tasks.delete tasks[indexPath.row]
+
+      # delete actual task in db
+      selected_task = tasks[indexPath.row]
+      Task.find {|task| task == selected_task}.delete
+      Task.serialize_to_file 'tasks.dat'
+
+      # delete row
       tableView.deleteRowsAtIndexPaths [indexPath], withRowAnimation:UITableViewRowAnimationFade
+
+      # reload data from tasks
       tableView.reloadData
 
       puts "tasks = #{tasks}"
