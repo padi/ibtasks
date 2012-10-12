@@ -3,12 +3,12 @@
 
 #import "Stubs.h"
 
-@implementation TaskListViewController
+@implementation TaskAddViewController
 
 @end
 
 
-@implementation TaskListViewCell
+@implementation TaskListViewController
 
 @end
 

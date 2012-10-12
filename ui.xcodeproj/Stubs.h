@@ -5,25 +5,26 @@
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
 
+@interface TaskAddViewController : UIViewController
+
+
+
+
+
+-(IBAction) close;
+-(IBAction) cancel:(id) sender;
+-(IBAction) save:(id) sender;
+
+@end
+
+
 @interface TaskListViewController : UITableViewController
 
 
 
 
 
-
-
-@end
-
-
-@interface TaskListViewCell : UITableViewCell
-
-@property IBOutlet UILabel * title;
-@property IBOutlet UILabel * date;
-
-
-
-
+-(IBAction) viewDidLoad;
 
 @end
 
