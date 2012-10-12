@@ -5,8 +5,6 @@ class TaskListViewController < UITableViewController
     super
 
     self.tasks = Task.all
-    puts "tasks ="
-    puts tasks.inspect
   end
 
   def tableView tableView, cellForRowAtIndexPath: indexPath
@@ -15,14 +13,14 @@ class TaskListViewController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
 
     # if cell.nil?
-    #   cell = TaskListViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+      # cell = TaskListViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
     # end
 
     # cell.setText NSString.stringWithFormat "I am cell #{indexPath.row}"
 
     task = tasks[indexPath.row]
 
-    cell.textLabel.text = task.title + indexPath.row.to_s
+    cell.textLabel.text = task.title
     cell.detailTextLabel.text = task.date.to_s
 
     cell
@@ -30,6 +28,12 @@ class TaskListViewController < UITableViewController
 
   def tableView tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath
     if editingStyle == UITableViewCellEditingStyleDelete
+      puts 'triggered'
+      tasks.delete tasks[indexPath.row]
+      tableView.deleteRowsAtIndexPaths [indexPath], withRowAnimation:UITableViewRowAnimationFade
+      tableView.reloadData
+
+      puts "tasks = #{tasks}"
       self
     end
   end

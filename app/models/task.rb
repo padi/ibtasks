@@ -2,12 +2,14 @@ class Task
   attr_accessor :title, :date
 
   def self.all
-    [Task.alloc.initWithDefaults, Task.alloc.initWithDefaults]
+    [Task.alloc.initWithTitle("Something"), Task.alloc.initWithTitle("Different")]
   end
 
-  def initWithDefaults
-    self.title = "Some Title" if init
+  def initWithDefaults title
+    self.title = title||"Some Title" if init
     self.date = Time.now
     self
   end
+
+  alias :initWithTitle :initWithDefaults
 end
